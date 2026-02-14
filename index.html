@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>CITY CHOICE BAKERS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <div class="top-section animated-bg-1">
+        <header class="header">
+            <img src="https://i.ibb.co/S4b5kWP5/20260214-170235.png" class="logo animated-logo">
+            <h2 class="animated-logo-text">CITY CHOICE BAKERS</h2>
+            <p class="animated-logo-text">Cake Order Page</p>
+        </header>
+
+        <div class="banner-container">
+            <div class="banner-slider" id="bannerSlider">
+                <div class="slide">
+                    <img src="https://i.ibb.co/67FXY5RS/20260214-161813.jpg">
+                    <div class="banner-text">Special Cake Offers 🎂</div>
+                </div>
+                <div class="slide">
+                    <img src="https://i.ibb.co/NnyQ1bdp/1771068342698.png">
+                    <div class="banner-text">Freshly Baked Every Day 🍞</div>
+                </div>
+                <div class="slide">
+                    <img src="https://i.ibb.co/2YNkr8MY/1771068496211.png">
+                    <div class="banner-text">Best Quality Ingredients ✨</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="categories">
+            <div class="animated-cat">🧁<span>Bakery</span></div>
+            <div class="animated-cat">🎂<span>Cakes</span></div>
+            <div class="animated-cat">🍔<span>Fast Food</span></div>
+            <div class="animated-cat">🥡<span>Disposal</span></div>
+        </div>
+    </div>
+
+    <input class="search animated-search" placeholder="Search cakes, bakery items...">
+
+    <div class="products-section animated-bg-2">
+        <h3 class="title animated-title">Our Products</h3>
+        <div class="products">
+            <div class="product" onclick="openDetail('Chocolate Cake','₹1199','Red Rose Butterfly Cake.','https://i.ibb.co/LDshsnR1/file-00000000d48071fdb2442ade2a8ffd12.png')">
+                <img src="https://i.ibb.co/LDshsnR1/file-00000000d48071fdb2442ade2a8ffd12.png">
+                <h4>Red Rose Butterfly Cake</h4>
+                <p>₹1199</p>
+            </div>
+            <div class="product" onclick="openDetail('Royal Rasmalai Delight Cake','₹1499','Rich yellow glaze, soft cream piping, crunchy nuts aur rose petals se sajja hua premium celebration cake. 💛🎂s.','https://i.ibb.co/xtG2p9N2/IMG-20260214-WA0013.jpg')">
+                <img src="https://i.ibb.co/xtG2p9N2/IMG-20260214-WA0013.jpg">
+                <h4>Royal Rasmalai Delight Cake</h4>
+                <p>₹1499</p>
+            </div>
+            
+            <div class="product" onclick="openDetail('Pineapple Mirror Glaze Cake (with Chocolate Garnishes','₹799','A bright yellow pineapple-flavored cake coated in a smooth mirror glaze and decorated with elegant black-and-white swirls and geometric chocolate shards.','https://i.ibb.co/SwBJcmsS/IMG-20260214-WA0020.jpg')">
+                <img src="https://i.ibb.co/SwBJcmsS/IMG-20260214-WA0020.jpg">
+                <h4>Pineapple Mirror Glaze Cake (with Chocolate Garnishes</h4>
+                <p>₹799</p>
+            </div>
+            
+            <div class="product" onclick="openDetail('Butterscotch Nougat Cakes','₹999','These are creamy butterscotch-flavored cakes topped with crunchy caramel nougat bits, vibrant red cherries, and elegant yellow chocolate garnishes..','https://i.ibb.co/BVQ3ZgkD/IMG-20260214-WA0022.jpg')">
+                <img src="https://i.ibb.co/BVQ3ZgkD/IMG-20260214-WA0022.jpg">
+                <h4>Butterscotch Nougat Cakes</h4>
+                <p>₹999</p>
+            </div>
+            
+            <div class="product" onclick="openDetail('Butterscotch Praline Mini Cakes','₹1199','These are creamy butterscotch cakes topped with crunchy caramel praline bits, fresh red cherries, and decorative yellow chocolate leaves.','https://i.ibb.co/NgR9v6bH/IMG-20260214-WA0027.jpg')">
+                <img src="https://i.ibb.co/NgR9v6bH/IMG-20260214-WA0027.jpg">
+                <h4>Butterscotch Praline Mini Cakes</h4>
+                <p>₹1199</p>
+            </div>
+            
+            <div class="product" onclick="openDetail('Tier Floral Celebration Cakes','₹1999','These are elaborate two-tier cream cakes featuring vibrant frosting, edible gold foil accents, and a cascade of colorful handcrafted cream flowers..','https://i.ibb.co/n8NFZGTr/IMG-20260214-WA0033.jpg')">
+                <img src="https://i.ibb.co/n8NFZGTr/IMG-20260214-WA0033.jpg">
+                <h4>Tier Floral Celebration Cakes</h4>
+                <p>₹1999</p>
+            </div>
+            
+            
+            </div>
+    </div>
+
+    <div id="detailBox" class="detail">
+        <img id="dimg" src="">
+        <h3 id="dname"></h3>
+        <p id="dprice"></p>
+        <p id="ddesc"></p>
+        <button class="buy-btn" onclick="openOrder()">Buy Now</button>
+    </div>
+
+    <div id="orderBox" class="order">
+        <h3>Order Details</h3>
+        <input id="cname" placeholder="Customer Name">
+        <input id="cphone" placeholder="Phone Number">
+        <input id="cwa" placeholder="WhatsApp Number">
+        <textarea id="cmsg" placeholder="Cake Message"></textarea>
+        <button class="wa-btn" onclick="sendWhatsApp()">Send to WhatsApp</button>
+    </div>
+
+    <footer class="footer">
+        <img src="https://i.ibb.co/S4b5kWP5/20260214-170235.png" class="footer-logo">
+        <p><b>Owner:</b> Nisar Ahmad Sheikh</p>
+        <p>Contact: +91 7006592704</p>
+        <p>© 2026 City Choice Bakers</p>
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
