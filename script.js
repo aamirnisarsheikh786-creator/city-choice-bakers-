@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function () {
+
 const advancePrices = {
     "Chocolate Cake": 499,
     "Royal Rasmalai Delight Cake": 499,
@@ -12,12 +14,13 @@ let currentSlide = 0;
 const slider = document.getElementById('bannerSlider');
 const totalSlides = 3;
 
-function autoSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    slider.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+if (slider) {
+    function autoSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        slider.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+    }
+    setInterval(autoSlide, 5000);
 }
-// 5 Seconds interval
-setInterval(autoSlide, 5000);
 
 // PRODUCT DETAIL LOGIC
 let selectedProduct = {};
@@ -38,14 +41,17 @@ function openDetail(name, price, desc, img) {
 }
 
 function openOrder() {
+
     const orderBox = document.getElementById("orderBox");
     orderBox.style.display = "block";
 
-    const adv = advancePrices[selectedProduct.name] || 199;
-    selectedProduct.advance = adv;
+    const qty = parseInt(document.getElementById("qty")?.value || 1);
+
+    const advPerItem = advancePrices[selectedProduct.name] || 199;
+    selectedProduct.advance = advPerItem * qty;
 
     const advEl = document.getElementById("advAmount");
-    if (advEl) advEl.innerText = "₹" + adv;
+    if (advEl) advEl.innerText = "₹" + selectedProduct.advance;
 
     orderBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -58,6 +64,9 @@ function sendWhatsApp() {
     const msg = document.getElementById("cmsg").value;
     const paid = document.getElementById("paidConfirm").checked;
 
+    const qty = parseInt(document.getElementById("qty").value || 1);
+    const customAdvance = parseInt(document.getElementById("customAdvance").value || 0);
+
     if (!name || !phone) {
         alert("Please enter Name and Phone number");
         return;
@@ -68,24 +77,39 @@ function sendWhatsApp() {
         return;
     }
 
+    const advPerItem = advancePrices[selectedProduct.name] || 199;
+    const defaultAdvance = advPerItem * qty;
+
+    const paidAmount = customAdvance > 0 ? customAdvance : defaultAdvance;
+
+    const price = parseInt(selectedProduct.price.replace("₹",""));
+    const total = price * qty;
+    const pending = total - paidAmount;
+
     const text =
-    `*CITY CHOICE BAKERS ORDER*%0A%0A` +
+`*CITY CHOICE BAKERS ORDER*
 
-    `*PRODUCT DETAILS*%0A` +
-    `Name: ${selectedProduct.name}%0A` +
-    `Price: ${selectedProduct.price}%0A` +
-    `Advance Paid: ₹${selectedProduct.advance}%0A` +
-    `Product Image: ${selectedProduct.img}%0A%0A` +
+*PRODUCT DETAILS*
+Name: ${selectedProduct.name}
+Quantity: ${qty}
+Price Per Item: ₹${price}
+Total: ₹${total}
 
-    `*CUSTOMER DETAILS*%0A` +
-    `Name: ${name}%0A` +
-    `Phone: ${phone}%0A` +
-    `WhatsApp: ${wa}%0A` +
-    `Message: ${msg}%0A%0A` +
+Advance Paid: ₹${paidAmount}
+Pending: ₹${pending}
 
-    `*PAYMENT:* Advance paid via QR scan`;
+Product Image: ${selectedProduct.img}
 
-    window.open(`https://wa.me/7006592704?text=${text}`);
+*CUSTOMER DETAILS*
+Name: ${name}
+Phone: ${phone}
+WhatsApp: ${wa}
+Message: ${msg}
+
+*PAYMENT:* Advance paid via QR scan`;
+
+    const encodedText = encodeURIComponent(text);
+    window.open(`https://wa.me/7006592704?text=${encodedText}`);
 }
 
 async function downloadInvoice() {
@@ -102,9 +126,17 @@ async function downloadInvoice() {
         return;
     }
 
-    const total = parseInt(selectedProduct.price.replace("₹",""));
-    const advance = selectedProduct.advance || 199;
-    const pending = total - advance;
+        const qty = parseInt(document.getElementById("qty").value || 1);
+const customAdvance = parseInt(document.getElementById("customAdvance").value || 0);
+
+const price = parseInt(selectedProduct.price.replace("₹",""));
+const total = price * qty;
+
+const advPerItem = advancePrices[selectedProduct.name] || 199;
+const defaultAdvance = advPerItem * qty;
+
+const advance = customAdvance > 0 ? customAdvance : defaultAdvance;
+const pending = total - advance;
 
     const logoUrl = "https://i.ibb.co/S4b5kWP5/20260214-170235.png";
     const img = new Image();
@@ -165,8 +197,8 @@ async function downloadInvoice() {
 
         // PRODUCT ROW
         doc.rect(10, y-4, 190, 10);
-        doc.text(selectedProduct.name, 12, y+2);
-        doc.text("₹"+total, 150, y+2);
+        doc.text(selectedProduct.name + " x" + qty, 12, y+2);
+doc.text("₹"+total, 150, y+2);
         y += 15;
 
         // PAYMENT DETAILS
@@ -188,3 +220,11 @@ async function downloadInvoice() {
         doc.save("CityChoiceInvoice.pdf");
     };
 }
+
+window.openDetail = openDetail;
+window.openOrder = openOrder;
+window.sendWhatsApp = sendWhatsApp;
+window.downloadInvoice = downloadInvoice;
+
+  
+});
