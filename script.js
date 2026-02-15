@@ -69,15 +69,21 @@ function sendWhatsApp() {
     }
 
     const text =
-        `*CITY CHOICE BAKERS ORDER*%0A%0A` +
-        `*PRODUCT:* ${selectedProduct.name}%0A` +
-        `*PRICE:* ${selectedProduct.price}%0A` +
-        `*ADVANCE PAID:* ₹${selectedProduct.advance}%0A%0A` +
-        `*CUSTOMER:* ${name}%0A` +
-        `*PHONE:* ${phone}%0A` +
-        `*WHATSAPP:* ${wa}%0A` +
-        `*MESSAGE:* ${msg}%0A%0A` +
-        `*PAYMENT DONE VIA QR SCAN*`;
+    `*CITY CHOICE BAKERS ORDER*%0A%0A` +
+
+    `*PRODUCT DETAILS*%0A` +
+    `Name: ${selectedProduct.name}%0A` +
+    `Price: ${selectedProduct.price}%0A` +
+    `Advance Paid: ₹${selectedProduct.advance}%0A` +
+    `Product Image: ${selectedProduct.img}%0A%0A` +
+
+    `*CUSTOMER DETAILS*%0A` +
+    `Name: ${name}%0A` +
+    `Phone: ${phone}%0A` +
+    `WhatsApp: ${wa}%0A` +
+    `Message: ${msg}%0A%0A` +
+
+    `*PAYMENT:* Advance paid via QR scan`;
 
     window.open(`https://wa.me/7006592704?text=${text}`);
 }
@@ -100,55 +106,84 @@ async function downloadInvoice() {
     const advance = selectedProduct.advance || 199;
     const pending = total - advance;
 
-    let y = 20;
-
-    // 🔴 LOAD LOGO
     const logoUrl = "https://i.ibb.co/S4b5kWP5/20260214-170235.png";
-
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.src = logoUrl;
 
     img.onload = function () {
 
-        // LOGO
-        doc.addImage(img, "PNG", 80, 5, 50, 30);
+        // HEADER BACKGROUND
+        doc.setFillColor(245, 222, 179);
+        doc.rect(0, 0, 210, 40, 'F');
 
-        y = 45;
+        // LOGO
+        doc.addImage(img, "PNG", 10, 5, 30, 30);
 
         // SHOP NAME
-        doc.setFontSize(18);
-        doc.text("CITY CHOICE BAKERS", 20, y); y+=8;
+        doc.setFontSize(20);
+        doc.setTextColor(120, 40, 0);
+        doc.text("CITY CHOICE BAKERS", 50, 20);
 
         doc.setFontSize(10);
-        doc.text("Owner: Nisar Ahmad Sheikh", 20, y); y+=6;
-        doc.text("Phone: +91 7006592704", 20, y); y+=6;
-        doc.text("Email: citychoicebakers@gmail.com", 20, y); y+=6;
-        doc.text("Address: Your shop address here", 20, y); y+=10;
+        doc.setTextColor(0,0,0);
+        doc.text("Owner: Nisar Ahmad Sheikh", 50, 26);
+        doc.text("Phone: +91 7006592704", 50, 31);
+        doc.text("citychoicebakers@gmail.com", 50, 36);
+
+        let y = 50;
+
+        // INVOICE TITLE
+        doc.setFontSize(16);
+        doc.text("INVOICE BILL", 80, y);
+        y += 10;
+
+        doc.line(10, y, 200, y);
+        y += 8;
 
         // DATE
-        doc.text("Date: " + new Date().toLocaleDateString(), 20, y); y+=10;
+        doc.setFontSize(11);
+        doc.text("Date: " + new Date().toLocaleDateString(), 10, y);
+        y += 10;
 
-        // CUSTOMER
-        doc.setFontSize(12);
-        doc.text("Customer Details", 20, y); y+=8;
-        doc.setFontSize(10);
-        doc.text("Name: " + name, 20, y); y+=6;
-        doc.text("Phone: " + phone, 20, y); y+=6;
-        doc.text("Message: " + msg, 20, y); y+=10;
+        // CUSTOMER BOX
+        doc.setFillColor(240,240,240);
+        doc.rect(10, y, 190, 30, 'F');
 
-        // PRODUCT
-        doc.setFontSize(12);
-        doc.text("Product Details", 20, y); y+=8;
-        doc.setFontSize(10);
-        doc.text("Product: " + selectedProduct.name, 20, y); y+=6;
-        doc.text("Total Amount: ₹" + total, 20, y); y+=6;
-        doc.text("Advance Paid: ₹" + advance, 20, y); y+=6;
-        doc.text("Pending Amount: ₹" + pending, 20, y); y+=12;
+        doc.text("Customer Details", 12, y+6);
+        doc.text("Name: " + name, 12, y+14);
+        doc.text("Phone: " + phone, 12, y+22);
+        y += 40;
 
-        // THANK YOU
+        // PRODUCT TABLE HEADER
+        doc.setFillColor(220,220,220);
+        doc.rect(10, y, 190, 8, 'F');
+
+        doc.text("Product", 12, y+6);
+        doc.text("Total", 150, y+6);
+        y += 12;
+
+        // PRODUCT ROW
+        doc.rect(10, y-4, 190, 10);
+        doc.text(selectedProduct.name, 12, y+2);
+        doc.text("₹"+total, 150, y+2);
+        y += 15;
+
+        // PAYMENT DETAILS
+        doc.text("Advance Paid: ₹" + advance, 12, y); y+=8;
+        doc.text("Pending Amount: ₹" + pending, 12, y); y+=10;
+
+        doc.line(10, y, 200, y);
+        y+=10;
+
         doc.setFontSize(14);
-        doc.text("Thank you for ordering from City Choice Bakers!", 20, y);
+        doc.text("TOTAL: ₹" + total, 140, y);
+        y+=15;
+
+        // FOOTER
+        doc.setFontSize(11);
+        doc.text("Thank you for ordering from City Choice Bakers!", 30, y);
+        doc.text("Fresh cakes made with love ❤", 55, y+7);
 
         doc.save("CityChoiceInvoice.pdf");
     };
