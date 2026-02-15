@@ -100,7 +100,28 @@
         <input id="cphone" placeholder="Phone Number">
         <input id="cwa" placeholder="WhatsApp Number">
         <textarea id="cmsg" placeholder="Cake Message"></textarea>
+       <div class="payment-box">
+    <h4>Advance Payment Required</h4>
+    <p>Please pay advance before confirming order</p>
+
+    <p><b>Advance Amount:</b> <span id="advAmount">₹199</span></p>
+
+    <p><b>UPI ID:</b> mehnaznisar1985@okhdfcbank</p>
+    <p><b>Account No:</b> 0139040800000407</p>
+    <p><b>IFSC:</b> JAKA0SPRING</p>
+    <p><b>Name:</b> Mehnaaz begum</p>
+
+    <img src="https://i.ibb.co/hxphsTbM/IMG-20260215-WA0001.jpg" style="width:200px;margin:10px auto;display:block">
+
+    <label>
+        <input type="checkbox" id="paidConfirm"> I have paid the advance
+    </label>
+</div>
+       
         <button class="wa-btn" onclick="sendWhatsApp()">Send to WhatsApp</button>
+        <button class="wa-btn" onclick="downloadInvoice()" style="background:#0a7d3b;margin-top:10px">
+Download Invoice
+</button>
     </div>
 
     <footer class="footer">
@@ -111,8 +132,7 @@
     </footer>
 
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
-
