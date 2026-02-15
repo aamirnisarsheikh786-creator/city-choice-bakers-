@@ -28,7 +28,7 @@
                     <div class="banner-text">Freshly Baked Every Day 🍞</div>
                 </div>
                 <div class="slide">
-                    <img src="https://i.ibb.co/HpFj3Dpg/20260215-154027.jpg">
+                    <img src="https://i.ibb.co/2YNkr8MY/1771068496211.png">
                     <div class="banner-text">Best Quality Ingredients ✨</div>
                 </div>
             </div>
@@ -100,11 +100,20 @@
         <input id="cphone" placeholder="Phone Number">
         <input id="cwa" placeholder="WhatsApp Number">
         <textarea id="cmsg" placeholder="Cake Message"></textarea>
+        
+        <label style="font-weight:bold">Quantity</label>
+<input id="qty" type="number" value="1" min="1" style="width:80px;margin-bottom:10px">
+       
        <div class="payment-box">
     <h4>Advance Payment Required</h4>
     <p>Please pay advance before confirming order</p>
 
     <p><b>Advance Amount:</b> <span id="advAmount">₹199</span></p>
+   
+    <div style="margin-top:8px">
+    <label>Enter Paid Advance (optional)</label>
+    <input id="customAdvance" type="number" placeholder="Enter amount you paid">
+</div>
 
     <p><b>UPI ID:</b> mehnaznisar1985@okhdfcbank</p>
     <p><b>Account No:</b> 0139040800000407</p>
@@ -114,7 +123,7 @@
     <img src="https://i.ibb.co/hxphsTbM/IMG-20260215-WA0001.jpg" style="width:200px;margin:10px auto;display:block">
 
     <label>
-        <input type="checkbox" id="paidConfirm"> I have paid the advance
+        <input type="checkbox" id="paidConfirm"> I have paid advance payment
     </label>
 </div>
        
@@ -136,5 +145,4 @@ Download Invoice
 <script src="script.js"></script>
 </body>
 </html>
-
 
