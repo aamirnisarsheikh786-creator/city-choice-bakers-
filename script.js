@@ -226,5 +226,33 @@ window.openOrder = openOrder;
 window.sendWhatsApp = sendWhatsApp;
 window.downloadInvoice = downloadInvoice;
 
+  // RAMADAN POPUP CLOSE
+function closeRamadan(){
+    document.getElementById("ramadanPopup").style.display="none";
+}
+window.closeRamadan = closeRamadan;
+// AUTO CLOSE AFTER 6s
+setTimeout(closeRamadan,6000);
+
+// FLOATING LANTERNS
+function createLantern(){
+    const area = document.getElementById("ramadanArea");
+    if(!area) return;
+
+    const lantern=document.createElement("div");
+    lantern.className="lantern";
+    lantern.innerHTML="🏮";
+
+    lantern.style.left=Math.random()*90+"%";
+    lantern.style.animationDuration=(5+Math.random()*5)+"s";
+
+    area.appendChild(lantern);
+
+    setTimeout(()=>lantern.remove(),10000);
+}
+
+setInterval(createLantern,900);
   
 });
+
+            
