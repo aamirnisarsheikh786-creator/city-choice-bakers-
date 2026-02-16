@@ -10,12 +10,17 @@
 
 <div class="app-container">
 
-    <div class="top-section animated-bg-1">
+    <div class="top-section animated-bg-1" id="ramadanArea">
         <header class="header">
             <img src="https://i.ibb.co/S4b5kWP5/20260214-170235.png" class="logo animated-logo">
             <h2 class="animated-logo-text">CITY CHOICE BAKERS</h2>
             <p class="animated-logo-text">Cake Order Page</p>
         </header>
+
+<div class="ramadan-offer">
+    🌙 RAMADAN MUBARAK 🌙
+    <span>Special 20% OFF on all Cakes 🎂</span>
+</div>
 
         <div class="banner-container">
             <div class="banner-slider" id="bannerSlider">
@@ -37,7 +42,7 @@
         <div class="categories">
             <div class="animated-cat">🧁<span>Bakery</span></div>
             <div class="animated-cat">🎂<span>Cakes</span></div>
-            <div class="animated-cat">🍔<span>Fast Food</span></div>
+            <div class="animated-cat">🍰<span>Pastry</span></div>
             <div class="animated-cat">🥡<span>Disposal</span></div>
         </div>
     </div>
@@ -135,14 +140,26 @@ Download Invoice
 
     <footer class="footer">
         <img src="https://i.ibb.co/S4b5kWP5/20260214-170235.png" class="footer-logo">
+        <p><b>CITY CHOICE BAKERS</b></p>
         <p><b>Owner:</b> Nisar Ahmad Sheikh</p>
         <p>Contact: +91 7006592704</p>
         <p>© 2026 City Choice Bakers</p>
     </footer>
+
+<div id="ramadanPopup" class="ramadan-popup">
+    <div class="popup-box">
+        <div class="gift">🎁</div>
+        <h2>Ramadan Mubarak</h2>
+        <p>Get <b>20% OFF</b> on every cake order</p>
+        <p>+ Free Greeting Card</p>
+        <button onclick="closeRamadan()">Start Ordering</button>
+    </div>
+</div>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
+
 
