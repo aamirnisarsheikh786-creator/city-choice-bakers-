@@ -6,7 +6,15 @@ const advancePrices = {
     "Pineapple Mirror Glaze Cake (with Chocolate Garnishes": 299,
     "Butterscotch Nougat Cakes": 499,
     "Butterscotch Praline Mini Cakes": 499,
-    "Tier Floral Celebration Cakes": 499
+    "Tier Floral Celebration Cakes": 499,
+    "Royal Chocolate Delight": 499,
+    "The Spilled Sweetness Cake": 999,
+    "White Forest Two-Tier Floral Cake": 1499,
+    "Two-Tier Festive Bloom Cake": 999,
+    "Romantic Red Rose Heart Cake": 499,
+    "Mehandi Mubarak Mirror Cake": 799,
+    "Chocolate Strawberry Brigadeiro Cake": 999,
+    "Tier Floral Celebration Cakes": 999,
 };
 
 // BANNER SLIDER LOGIC
@@ -244,6 +252,7 @@ function createLantern(){
     lantern.innerHTML="🏮";
 
     lantern.style.left=Math.random()*90+"%";
+    lantern.style.top="-20px";
     lantern.style.animationDuration=(5+Math.random()*5)+"s";
 
     area.appendChild(lantern);
@@ -253,6 +262,46 @@ function createLantern(){
 
 setInterval(createLantern,900);
   
+  function filterCategory(cat){
+    const items=document.querySelectorAll(".product");
+
+    items.forEach(item=>{
+        if(cat==="all" || item.dataset.cat===cat){
+            item.style.display="block";
+        }else{
+            item.style.display="none";
+        }
+    });
+}
+
+window.filterCategory = filterCategory;
+  
+  function closeDetail(){
+    document.getElementById("detailBox").style.display="none";
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+window.closeDetail = closeDetail;
+ 
+ // SEARCH FUNCTION
+const searchInput = document.querySelector(".search");
+searchInput.addEventListener("input", function() {
+    const query = this.value.toLowerCase();
+    const products = document.querySelectorAll(".product");
+
+    products.forEach(p => {
+        const name = p.querySelector("h4").innerText.toLowerCase();
+        if(name.includes(query)){
+            p.style.display = "block";
+        } else {
+            p.style.display = "none";
+        }
+    });
 });
+ 
+ 
+  
+});
+
 
             
