@@ -33,60 +33,117 @@
                     <div class="banner-text">Freshly Baked Every Day 🍞</div>
                 </div>
                 <div class="slide">
-                    <img src="https://i.ibb.co/2YNkr8MY/1771068496211.png">
+                    <img src="https://i.ibb.co/HpFj3Dpg/20260215-154027.jpg">
                     <div class="banner-text">Best Quality Ingredients ✨</div>
                 </div>
             </div>
         </div>
 
-        <div class="categories">
-            <div class="animated-cat">🧁<span>Bakery</span></div>
-            <div class="animated-cat">🎂<span>Cakes</span></div>
-            <div class="animated-cat">🍰<span>Pastry</span></div>
-            <div class="animated-cat">🥡<span>Disposal</span></div>
-        </div>
-    </div>
+<div class="categories">
+    <div class="animated-cat" onclick="filterCategory('all')">✨<span>All</span></div>
+    <div class="animated-cat" onclick="filterCategory('cakes')">🎂<span>Cakes</span></div>
+    <div class="animated-cat" onclick="filterCategory('pastry')">🍰<span>Pastry</span></div>
+    <div class="animated-cat" onclick="filterCategory('bakery')">🧁<span>Bakery</span></div>
+    <div class="animated-cat" onclick="filterCategory('disposal')">🥡<span>Disposal</span></div>
+</div>
 
     <input class="search animated-search" placeholder="Search cakes, bakery items...">
 
     <div class="products-section animated-bg-2">
         <h3 class="title animated-title">Our Products</h3>
         <div class="products">
-            <div class="product" onclick="openDetail('Chocolate Cake','₹1199','Red Rose Butterfly Cake.','https://i.ibb.co/LDshsnR1/file-00000000d48071fdb2442ade2a8ffd12.png')">
-                <img src="https://i.ibb.co/LDshsnR1/file-00000000d48071fdb2442ade2a8ffd12.png">
-                <h4>Red Rose Butterfly Cake</h4>
-                <p>₹1199</p>
-            </div>
-            <div class="product" onclick="openDetail('Royal Rasmalai Delight Cake','₹1499','Rich yellow glaze, soft cream piping, crunchy nuts aur rose petals se sajja hua premium celebration cake. 💛🎂s.','https://i.ibb.co/xtG2p9N2/IMG-20260214-WA0013.jpg')">
+            <div class="product" data-cat="cakes" onclick="openDetail('Chocolate Cake','₹1199','Red Rose Butterfly Cake.','https://i.ibb.co/LDshsnR1/file-00000000d48071fdb2442ade2a8ffd12.png')">
+    
+    <!-- RAMADAN OFFER TAG -->
+    <span class="offer-tag">🎉 🌙 Ramadan Offer</span>
+    
+    <img src="https://i.ibb.co/LDshsnR1/file-00000000d48071fdb2442ade2a8ffd12.png">
+    <h4>Red Rose Butterfly Cake</h4>
+    <p>₹1199</p>
+</div>
+            <div class="product" data-cat="cakes" onclick="openDetail('Royal Rasmalai Delight Cake','₹1499','Rich yellow glaze, soft cream piping, crunchy nuts aur rose petals se sajja hua premium celebration cake. 💛🎂s.','https://i.ibb.co/xtG2p9N2/IMG-20260214-WA0013.jpg')">
+               
+                   <!-- RAMADAN OFFER TAG -->
+    <span class="offer-tag">🎉 🌙 Ramadan Offer</span>
+               
                 <img src="https://i.ibb.co/xtG2p9N2/IMG-20260214-WA0013.jpg">
                 <h4>Royal Rasmalai Delight Cake</h4>
                 <p>₹1499</p>
             </div>
             
-            <div class="product" onclick="openDetail('Pineapple Mirror Glaze Cake (with Chocolate Garnishes','₹799','A bright yellow pineapple-flavored cake coated in a smooth mirror glaze and decorated with elegant black-and-white swirls and geometric chocolate shards.','https://i.ibb.co/SwBJcmsS/IMG-20260214-WA0020.jpg')">
+            <div class="product" data-cat="cakes" onclick="openDetail('Pineapple Mirror Glaze Cake (with Chocolate Garnishes','₹799','A bright yellow pineapple-flavored cake coated in a smooth mirror glaze and decorated with elegant black-and-white swirls and geometric chocolate shards.','https://i.ibb.co/SwBJcmsS/IMG-20260214-WA0020.jpg')">
+               
+                   <!-- RAMADAN OFFER TAG -->
+    <span class="offer-tag">🎉 🌙 Ramadan Offer</span>
+               
                 <img src="https://i.ibb.co/SwBJcmsS/IMG-20260214-WA0020.jpg">
                 <h4>Pineapple Mirror Glaze Cake (with Chocolate Garnishes</h4>
                 <p>₹799</p>
             </div>
             
-            <div class="product" onclick="openDetail('Butterscotch Nougat Cakes','₹999','These are creamy butterscotch-flavored cakes topped with crunchy caramel nougat bits, vibrant red cherries, and elegant yellow chocolate garnishes..','https://i.ibb.co/BVQ3ZgkD/IMG-20260214-WA0022.jpg')">
+            <div class="product" data-cat="cakes" onclick="openDetail('Butterscotch Nougat Cakes','₹999','These are creamy butterscotch-flavored cakes topped with crunchy caramel nougat bits, vibrant red cherries, and elegant yellow chocolate garnishes..','https://i.ibb.co/BVQ3ZgkD/IMG-20260214-WA0022.jpg')">
                 <img src="https://i.ibb.co/BVQ3ZgkD/IMG-20260214-WA0022.jpg">
                 <h4>Butterscotch Nougat Cakes</h4>
                 <p>₹999</p>
             </div>
             
-            <div class="product" onclick="openDetail('Butterscotch Praline Mini Cakes','₹1199','These are creamy butterscotch cakes topped with crunchy caramel praline bits, fresh red cherries, and decorative yellow chocolate leaves.','https://i.ibb.co/NgR9v6bH/IMG-20260214-WA0027.jpg')">
+            <div class="product" data-cat="cakes" onclick="openDetail('Butterscotch Praline Mini Cakes','₹1199','These are creamy butterscotch cakes topped with crunchy caramel praline bits, fresh red cherries, and decorative yellow chocolate leaves.','https://i.ibb.co/NgR9v6bH/IMG-20260214-WA0027.jpg')">
                 <img src="https://i.ibb.co/NgR9v6bH/IMG-20260214-WA0027.jpg">
                 <h4>Butterscotch Praline Mini Cakes</h4>
                 <p>₹1199</p>
             </div>
             
-            <div class="product" onclick="openDetail('Tier Floral Celebration Cakes','₹1999','These are elaborate two-tier cream cakes featuring vibrant frosting, edible gold foil accents, and a cascade of colorful handcrafted cream flowers..','https://i.ibb.co/n8NFZGTr/IMG-20260214-WA0033.jpg')">
+            <div class="product" data-cat="cakes" onclick="openDetail('Tier Floral Celebration Cakes','₹1999','These are elaborate two-tier cream cakes featuring vibrant frosting, edible gold foil accents, and a cascade of colorful handcrafted cream flowers..','https://i.ibb.co/n8NFZGTr/IMG-20260214-WA0033.jpg')">
                 <img src="https://i.ibb.co/n8NFZGTr/IMG-20260214-WA0033.jpg">
                 <h4>Tier Floral Celebration Cakes</h4>
                 <p>₹1999</p>
             </div>
             
+                        <div class="product" data-cat="cakes" onclick="openDetail('Royal Chocolate Delight','₹1499','Rich chocolate layers with creamy frosting – perfect for birthdays and special celebrations.','https://i.ibb.co/0pQp8dvr/IMG-20260216-WA0005.jpg')">
+                <img src="https://i.ibb.co/0pQp8dvr/IMG-20260216-WA0005.jpg">
+                <h4>Royal Chocolate Delight</h4>
+                <p>₹1499</p>
+            </div>
+            
+                        <div class="product" data-cat="cakes" onclick="openDetail('The Spilled Sweetness Cake','₹1999','A playful chocolate ganache drip cake featuring a waffle cone overflowing with vibrant candy-coated chocolates and rainbow sprinkles.','https://i.ibb.co/tST7dP0/IMG-20260216-WA0014.jpg')">
+                <img src="https://i.ibb.co/tST7dP0/IMG-20260216-WA0014.jpg">
+                <h4>The Spilled Sweetness Cake</h4>
+                <p>₹1999</p>
+            </div>
+            
+                        <div class="product" data-cat="cakes" onclick="openDetail('Chocolate Strawberry Brigadeiro Cake','₹1999','An indulgent chocolate cake smothered in thick chocolate ganache, topped with fresh strawberries and traditional Brazilian brigadeiro truffles.','https://i.ibb.co/3Y59hp50/IMG-20260216-WA0016.jpg')">
+                <img src="https://i.ibb.co/3Y59hp50/IMG-20260216-WA0016.jpg">
+                <h4>Chocolate Strawberry Brigadeiro Cake</h4>
+                <p>₹1999</p>
+            </div>
+            
+                        <div class="product" data-cat="cakes" onclick="openDetail('Mehandi Mubarak Mirror Cake','₹1799','This is a custom celebration cake based on the marble glaze design, specifically decorated for a Mehandi ceremony.','https://i.ibb.co/FLB1mh0L/IMG-20260216-WA0023.jpg')">
+                <img src="https://i.ibb.co/FLB1mh0L/IMG-20260216-WA0023.jpg">
+                <h4>Mehandi Mubarak Mirror Cake</h4>
+                <p>₹1799</p>
+            </div>
+            
+                        <div class="product" data-cat="cakes" onclick="openDetail('Romantic Red Rose Heart Cake','₹1499','A sentimental celebration cake decorated with a lush border of red frosting roses and delicate heart-shaped accents on a textured white base','https://i.ibb.co/nqLFbDQW/IMG-20260216-WA0013.jpg')">
+                <img src="https://i.ibb.co/nqLFbDQW/IMG-20260216-WA0013.jpg">
+                <h4>Romantic Red Rose Heart Cake</h4>
+                <p>₹1499</p>
+            </div>
+            
+                        <div class="product" data-cat="cakes" onclick="openDetail('Two-Tier Festive Bloom Cake','₹2499','An elegant two-tier celebration cake with a textured white frosting, decorated with green geometric chocolate shards, vibrant sugar flowers, and gold leaf accents.','https://i.ibb.co/rjncqbH/IMG-20260216-WA0020.jpg')">
+               
+                   <!-- RAMADAN OFFER TAG -->
+    <span class="offer-tag">🎉 🌙 Ramadan Offer</span>
+               
+                <img src="https://i.ibb.co/rjncqbH/IMG-20260216-WA0020.jpg">
+                <h4>Two-Tier Festive Bloom Cake</h4>
+                <p>₹2499</p>
+            </div>
+            
+                        <div class="product" data-cat="cakes" onclick="openDetail('White Forest Two-Tier Floral Cake','₹2999','An elegant two-tier white forest cake coated in delicate white chocolate flakes, crowned with a cluster of vibrant purple and pink frosting roses and sharp dark chocolate shards.','https://i.ibb.co/YFDy5Cfy/IMG-20260216-WA0024.jpg')">
+                <img src="https://i.ibb.co/YFDy5Cfy/IMG-20260216-WA0024.jpg">
+                <h4>White Forest Two-Tier Floral Cake</h4>
+                <p>₹2999</p>
+            </div>
             
             </div>
     </div>
@@ -120,12 +177,12 @@
     <input id="customAdvance" type="number" placeholder="Enter amount you paid">
 </div>
 
-    <p><b>UPI ID:</b> mehnaznisar1985@okhdfcbank</p>
-    <p><b>Account No:</b> 0139040800000407</p>
-    <p><b>IFSC:</b> JAKA0SPRING</p>
-    <p><b>Name:</b> Mehnaaz begum</p>
+    <p><b>UPI ID:</b> 7006592704@ibl</p>
+    <p><b>Account No:</b> 9220002100000497</p>
+    <p><b>IFSC:</b> PUNB0922000</p>
+    <p><b>Name:</b> City Choice</p>
 
-    <img src="https://i.ibb.co/hxphsTbM/IMG-20260215-WA0001.jpg" style="width:200px;margin:10px auto;display:block">
+    <img src="https://i.ibb.co/wZ2jzgcy/IMG-20260216-WA0007.jpg" style="width:200px;margin:10px auto;display:block">
 
     <label>
         <input type="checkbox" id="paidConfirm"> I have paid advance payment
@@ -161,5 +218,6 @@ Download Invoice
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
