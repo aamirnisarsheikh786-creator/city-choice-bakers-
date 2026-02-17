@@ -15,6 +15,8 @@ const advancePrices = {
     "Mehandi Mubarak Mirror Cake": 799,
     "Chocolate Strawberry Brigadeiro Cake": 999,
     "Tier Floral Celebration Cakes": 999,
+    "MTC Malkani Kimia Dates": 10,
+    "Barari Tunisian Dates": 10,
 };
 
 // BANNER SLIDER LOGIC
