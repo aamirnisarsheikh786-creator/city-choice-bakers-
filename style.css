@@ -42,6 +42,32 @@ body {
     padding: 10px 0;
 }
 
+.product {
+    position: relative; /* OFFER TAG ke liye zaruri */
+    /* tumhara pehle ka product styling yahan rahega */
+}
+
+/* OFFER TAG */
+.offer-tag{
+    position:absolute;
+    top:8px;
+    left:8px;
+    background: linear-gradient(45deg,#ffecb3,#ffc107);
+    color:#000;
+    font-size:11px;
+    font-weight:bold;
+    padding:2px 6px;
+    border-radius:6px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.3);
+    z-index:10;
+    animation:tagGlow 1.5s infinite alternate;
+}
+
+@keyframes tagGlow{
+    from{ box-shadow:0 2px 6px rgba(255,193,7,0.3); }
+    to{ box-shadow:0 4px 12px rgba(255,193,7,0.6); }
+}
+
 /* HEADER */
 .header { text-align: center; padding: 20px 0; color: white; }
 .logo { width: 100px; margin-bottom: 5px; }
@@ -260,7 +286,7 @@ button { border: none; padding: 12px; width: 100%; border-radius: 25px; cursor: 
 /* FLOATING LANTERNS */
 .lantern{
     position:absolute;
-    bottom:-60px;
+    top:-20px;
     font-size:26px;
     animation:floatLantern linear infinite;
     opacity:.9;
@@ -268,6 +294,21 @@ button { border: none; padding: 12px; width: 100%; border-radius: 25px; cursor: 
 }
 
 @keyframes floatLantern{
-    from{transform:translateY(0)}
-    to{transform:translateY(-120vh)}
+    from{ transform:translateY(-40px) rotate(0deg); opacity:0; }
+    20%{ opacity:.9; }
+    to{ transform:translateY(260px) rotate(360deg); opacity:0; }
 }
+
+.back-btn{
+    background:#222;
+    color:#fff;
+    border-radius:20px;
+    padding:8px 14px;
+    width:auto;
+    margin-bottom:10px;
+    font-size:13px;
+}
+
+.back-btn:hover{
+    background:#444;
+    }
