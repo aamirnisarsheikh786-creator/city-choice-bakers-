@@ -72,6 +72,7 @@ function sendWhatsApp() {
     const phone = document.getElementById("cphone").value;
     const wa = document.getElementById("cwa").value;
     const msg = document.getElementById("cmsg").value;
+    const deliveryDate = document.getElementById("deliveryDate").value;
     const paid = document.getElementById("paidConfirm").checked;
 
     const qty = parseInt(document.getElementById("qty").value || 1);
@@ -113,6 +114,7 @@ Product Image: ${selectedProduct.img}
 *CUSTOMER DETAILS*
 Name: ${name}
 Phone: ${phone}
+Delivery Date: ${deliveryDate}
 WhatsApp: ${wa}
 Message: ${msg}
 
@@ -130,6 +132,7 @@ async function downloadInvoice() {
     const name = document.getElementById("cname").value;
     const phone = document.getElementById("cphone").value;
     const msg = document.getElementById("cmsg").value;
+    const deliveryDate = document.getElementById("deliveryDate").value;
 
     if (!name || !phone) {
         alert("Fill customer details first");
@@ -155,80 +158,72 @@ const pending = total - advance;
 
     img.onload = function () {
 
-        // HEADER BACKGROUND
-        doc.setFillColor(245, 222, 179);
-        doc.rect(0, 0, 210, 40, 'F');
+    doc.setFillColor(60,30,10);
+    doc.rect(0,0,210,35,'F');
 
-        // LOGO
-        doc.addImage(img, "PNG", 10, 5, 30, 30);
+    doc.addImage(img,"PNG",15,5,25,25);
 
-        // SHOP NAME
-        doc.setFontSize(20);
-        doc.setTextColor(120, 40, 0);
-        doc.text("CITY CHOICE BAKERS", 50, 20);
+    doc.setFontSize(20);
+    doc.setTextColor(255,255,255);
+    doc.text("CITY CHOICE BAKERS",50,20);
 
-        doc.setFontSize(10);
-        doc.setTextColor(0,0,0);
-        doc.text("Owner: Nisar Ahmad Sheikh", 50, 26);
-        doc.text("Phone: +91 7006592704", 50, 31);
-        doc.text("citychoicebakers@gmail.com", 50, 36);
+    let y = 45;
+    doc.setTextColor(0,0,0);
 
-        let y = 50;
+    doc.setFontSize(16);
+    doc.text("INVOICE",90,y);
+    y+=10;
 
-        // INVOICE TITLE
-        doc.setFontSize(16);
-        doc.text("INVOICE BILL", 80, y);
-        y += 10;
+    doc.setFontSize(11);
+    doc.text("Date: "+ new Date().toLocaleDateString(),140,y);
+    y+=15;
 
-        doc.line(10, y, 200, y);
-        y += 8;
+    // Customer Box
+    doc.setFillColor(240,240,240);
+    doc.rect(10,y,190,35,'F');
 
-        // DATE
-        doc.setFontSize(11);
-        doc.text("Date: " + new Date().toLocaleDateString(), 10, y);
-        y += 10;
+    doc.text("Name: "+name,15,y+10);
+    doc.text("Phone: "+phone,15,y+18);
+    doc.text("Delivery: "+deliveryDate,15,y+26);
 
-        // CUSTOMER BOX
-        doc.setFillColor(240,240,240);
-        doc.rect(10, y, 190, 30, 'F');
+    y+=50;
 
-        doc.text("Customer Details", 12, y+6);
-        doc.text("Name: " + name, 12, y+14);
-        doc.text("Phone: " + phone, 12, y+22);
-        y += 40;
+    // Table Header
+    doc.setFillColor(220,220,220);
+    doc.rect(10,y,190,10,'F');
 
-        // PRODUCT TABLE HEADER
-        doc.setFillColor(220,220,220);
-        doc.rect(10, y, 190, 8, 'F');
+    doc.text("Product",15,y+7);
+    doc.text("Qty",120,y+7);
+    doc.text("Price",140,y+7);
+    doc.text("Total",170,y+7);
 
-        doc.text("Product", 12, y+6);
-        doc.text("Total", 150, y+6);
-        y += 12;
+    y+=15;
 
-        // PRODUCT ROW
-        doc.rect(10, y-4, 190, 10);
-        doc.text(selectedProduct.name + " x" + qty, 12, y+2);
-doc.text("₹"+total, 150, y+2);
-        y += 15;
+    // Product Row
+    doc.rect(10,y-5,190,12);
 
-        // PAYMENT DETAILS
-        doc.text("Advance Paid: ₹" + advance, 12, y); y+=8;
-        doc.text("Pending Amount: ₹" + pending, 12, y); y+=10;
+    doc.text(selectedProduct.name,15,y+2);
+    doc.text(qty.toString(),122,y+2);
+    doc.text("₹"+price,140,y+2);
+    doc.text("₹"+total,170,y+2);
 
-        doc.line(10, y, 200, y);
-        y+=10;
+    y+=20;
 
-        doc.setFontSize(14);
-        doc.text("TOTAL: ₹" + total, 140, y);
-        y+=15;
+    doc.text("Advance: ₹"+advance,130,y);
+    y+=8;
+    doc.text("Pending: ₹"+pending,130,y);
+    y+=10;
 
-        // FOOTER
-        doc.setFontSize(11);
-        doc.text("Thank you for ordering from City Choice Bakers!", 30, y);
-        doc.text("Fresh cakes made with love ❤", 55, y+7);
+    doc.setFontSize(14);
+    doc.text("Grand Total: ₹"+total,130,y);
 
-        doc.save("CityChoiceInvoice.pdf");
-    };
+    y+=20;
+
+    doc.setFontSize(10);
+    doc.text("Thank you for ordering from City Choice Bakers!",50,y);
+
+    doc.save("CityChoicePremiumInvoice.pdf");
+};
 }
 
 window.openDetail = openDetail;
